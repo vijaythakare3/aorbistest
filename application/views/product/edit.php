@@ -5,14 +5,22 @@
 		    <label class="control-label col-sm-2" for="name">Name <span class="text-danger">*</span>:</label>
 		    <div class="col-sm-10">
 		      <input type="text" class="form-control" name="name" id="name" required placeholder="Enter product name" value="<?php echo $detail['name']; ?>" >
+		      <span class="text-danger"><?php echo form_error('name'); ?></span>
 		    </div>
 		  </div>
+
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="parent">Category:</label>
-		    <div class="radio">
-		      <label><input type="radio" name="categoryid" class="category" value="5" >cat name</label>
-		    </div>
+		    <div class="col-sm-10">
+		    	<?php foreach ($categories as $id => $name) { ?>
+		    		<div class="radio">
+		      		<label><input type="radio" name="categoryid" class="category" value="<?php echo $id; ?>" <?php echo $id==$detail['categoryid'] ?'checked':''; ?> ><?php echo $name ?></label>
+		    		</div>
+		    	<?php } ?>
+		      <span class="text-danger"><?php echo form_error('categoryid'); ?></span>
+		    </div>		    
 		  </div>
+
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="image">Product Image <span class="text-danger">*</span>:</label>
 		    <div class="col-sm-10">
@@ -24,6 +32,7 @@
 		    <label class="control-label col-sm-2" for="price">Price <span class="text-danger">*</span>:</label>
 		    <div class="col-sm-10">
 		      <input type="text" class="form-control" name="price" id="price" required placeholder="Enter product price"  value="<?php echo $detail['price']; ?>">
+		      <span class="text-danger"><?php echo form_error('price'); ?></span>
 		    </div>
 		  </div>
 		  <div class="form-group">

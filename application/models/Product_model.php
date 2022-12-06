@@ -40,11 +40,20 @@ class Product_model extends CI_Model {
 
 	public function getParentChildren($parentid)
 	{
-		$this->db->select('c.*,p.name as parent_name');
+		$this->db->select('c.id, c.name,c.parentid,p.name as parent_name');
 		$this->db->from('category c');
 		$this->db->join('category p','p.id = c.parentid','left');
 		$this->db->where('c.status=1');
 		$this->db->where('c.parentid='.$parentid);
+		$query = $this->db->get();
+		return  $query->result_array();
+	}
+	public function getCatgoryProducts($catid)
+	{
+		$this->db->select('p.name, p.price, p.productimage');
+		$this->db->from('product p');
+		$this->db->where('p.status=1');
+		$this->db->where('p.categoryid='.$catid);
 		$query = $this->db->get();
 		return  $query->result_array();
 	}

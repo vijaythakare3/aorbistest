@@ -6,6 +6,7 @@
 		    <label class="control-label col-sm-2" for="name">Name <span class="text-danger">*</span>:</label>
 		    <div class="col-sm-10">
 		      <input type="text" class="form-control" name="name" id="name" required placeholder="Enter category name">
+		      <span class="text-danger"><?php echo form_error('name'); ?></span>
 		    </div>
 		  </div>
 		  <div class="form-group">

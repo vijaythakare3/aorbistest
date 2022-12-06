@@ -18,8 +18,20 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/userguide3/general/urls.html
 	 */
-	public function index()
-	{
-		$this->load->view('welcome_message');
+
+	public function testdb(){
+		$NAME=$this->db->database;
+		$this->load->dbutil();
+		$prefs = array(
+			'format' => 'zip',
+			'filename' => 'my_db_backup.sql'
+		);
+		$backup =& $this->dbutil->backup($prefs);
+		$db_name = $NAME.'.zip';
+		$save = FCPATH.'uploads/'.$db_name;
+		$this->load->helper('file');
+		write_file($save, $backup);
+		$this->load->helper('download');
+		force_download($db_name, $backup);
 	}
 }

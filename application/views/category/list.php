@@ -8,6 +8,7 @@
         <th>Sr No.</th>
         <th>Name</th>
         <th>Parent</th>
+        <th>Products</th>
         <th>Created Date</th>
         <th>Action</th>
       </tr>
@@ -18,6 +19,7 @@
         <td><?php echo $key+1 ?></td>
         <td><?php echo $cat['name']; ?></td>
         <td><?php echo $cat['parent_name']; ?></td>
+        <td><?php echo $cat['products']; ?></td>
         <td><?php echo date("d-m-Y h:i A", strtotime($cat['created_date'])); ?></td>
         <td>
         	<a href="<?php echo base_url()."index.php/category/edit/".$cat['id']; ?>">Edit</a>

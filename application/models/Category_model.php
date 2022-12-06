@@ -10,10 +10,12 @@ class Category_model extends CI_Model {
 
 	public function getCategories()
 	{
-		$this->db->select('c.*, p.name as parent_name');
+		$this->db->select('c.*, p.name as parent_name, count(pd.id) as products');
 		$this->db->from('category c');
 		$this->db->join('category p','p.id=c.parentid','left');
+		$this->db->join('product pd','pd.categoryid=c.id','left');
 		$this->db->where('c.status=1');
+		$this->db->group_by('c.id');
 		$query = $this->db->get();
 		return  $query->result_array();
 

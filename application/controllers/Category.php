@@ -102,7 +102,7 @@ class Category extends CI_Controller {
 		if($this->input->post()){
 			$this->load->library('form_validation');
 
-            $this->form_validation->set_rules('id', 'Id', 'required');
+            $this->form_validation->set_rules('id', 'Id', 'required|is_natural_no_zero');
 
             if ($this->form_validation->run())
             {

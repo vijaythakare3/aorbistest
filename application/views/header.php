@@ -16,7 +16,7 @@
       <a class="navbar-brand" href="#">Aorbistest</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class=""><a href="#">Home</a></li>
+      <li><a href="<?php echo base_url()."index.php/product/shop"?>">Shop</a></li>
       <li><a href="<?php echo base_url()."index.php/category/list"?>">Category</a></li>
       <li><a href="<?php echo base_url()."index.php/product/list"?>">Product</a></li>
     </ul>
